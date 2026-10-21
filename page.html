@@ -1,0 +1,592 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>GRAVO - تصميمات هندسية - دعاية وإعلان - كورسات تعليمية</title>
+    <!-- خط Cairo الاحترافي -->
+    <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;600;700;800&display=swap" rel="stylesheet">
+    
+    <style>
+        /* ==================== إعدادات عامة ==================== */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Cairo', sans-serif;
+        }
+
+        body {
+            background-color: #f4f6f9;
+            color: #333;
+            line-height: 1.6;
+        }
+
+        /* ==================== الهيدر والترويسة ==================== */
+        .main-header {
+            background: linear-gradient(135deg, #1a1a1a, #0a0a0a);
+            color: white;
+            padding: 20px 0;
+            box-shadow: 0 4px 10px rgba(0,0,0,0.15);
+        }
+
+        .header-content {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            flex-wrap: wrap;
+            text-align: center;
+        }
+
+        .brand h1 {
+            font-size: 32px;
+            letter-spacing: 2px;
+            color: #ff5e00;
+        }
+
+        .brand p {
+            font-size: 15px;
+            color: #ccc;
+        }
+
+        .contact-info {
+            font-weight: 600;
+            background-color: #222;
+            padding: 8px 15px;
+            border-radius: 20px;
+            border: 1px solid #444;
+            margin-top: 10px;
+        }
+
+        /* ==================== شريط التنقل والقائمة المنسدلة ==================== */
+        .navbar {
+            background-color: #0044ff;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.2);
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+        }
+
+        .nav-links {
+            list-style: none;
+            display: flex;
+            justify-content: center;
+            max-width: 1200px;
+            margin: 0 auto;
+            flex-wrap: wrap;
+        }
+
+        .nav-links li {
+            position: relative;
+        }
+
+        .nav-links a {
+            display: block;
+            color: white;
+            text-decoration: none;
+            padding: 14px 20px;
+            font-weight: bold;
+            transition: background 0.3s ease;
+        }
+
+        .nav-links a:hover {
+            background-color: #002bbb;
+        }
+
+        /* القائمة المنسدلة */
+        .dropdown-content {
+            display: none;
+            position: absolute;
+            top: 100%;
+            right: 0;
+            background-color: #ffffff;
+            min-width: 230px;
+            box-shadow: 0 8px 16px rgba(0,0,0,0.2);
+            list-style: none;
+            border-radius: 0 0 8px 8px;
+            overflow: hidden;
+        }
+
+        .dropdown-content li a {
+            color: #333;
+            padding: 12px 16px;
+            font-weight: normal;
+        }
+
+        .dropdown-content li a:hover {
+            background-color: #f1f1f1;
+            color: #0044ff;
+        }
+
+        .dropdown:hover .dropdown-content {
+            display: block;
+        }
+
+        /* ==================== شريط الأخبار المتحرك ==================== */
+        .ticker-wrap {
+            width: 100%;
+            background-color: #fff;
+            overflow: hidden;
+            white-space: nowrap;
+            border-bottom: 2px solid #ff5e00;
+            padding: 10px 0;
+        }
+
+        .ticker {
+            display: inline-block;
+            padding-right: 100%;
+            animation: ticker 25s linear infinite;
+            font-weight: bold;
+            color: #0044ff;
+            font-size: 16px;
+        }
+
+        @keyframes ticker {
+            0% { transform: translate3d(0, 0, 0); }
+            100% { transform: translate3d(100%, 0, 0); }
+        }
+
+        /* ==================== السلايدر الاحترافي المحسن ==================== */
+        .slider-container {
+            max-width: 1200px;
+            margin: 30px auto;
+            padding: 0 15px;
+        }
+
+        .slider {
+            position: relative;
+            overflow: hidden;
+            border-radius: 16px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.25);
+            background: #000;
+        }
+
+        .slides {
+            display: flex;
+            transition: transform 0.7s cubic-bezier(0.25, 1, 0.5, 1);
+        }
+
+        .slide {
+            min-width: 100%;
+            position: relative;
+            height: 480px;
+            overflow: hidden;
+        }
+
+        .slide img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            object-position: center;
+            display: block;
+            transition: transform 6s ease;
+        }
+
+        /* تأثير زوم خفيف عند عرض الصورة */
+        .slide.active img {
+            transform: scale(1.08);
+        }
+
+        /* طبقة حماية وتدرج احترافي فوق الصور */
+        .slide::after {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(to top, rgba(0, 0, 0, 0.75) 0%, rgba(0, 0, 0, 0.1) 60%, rgba(0, 0, 0, 0.3) 100%);
+            pointer-events: none;
+        }
+
+        /* عنوان وصف الصورة داخل السلايدر */
+        .slide-caption {
+            position: absolute;
+            bottom: 30px;
+            right: 30px;
+            left: 30px;
+            z-index: 2;
+            color: #fff;
+            text-shadow: 0 2px 8px rgba(0,0,0,0.8);
+        }
+
+        .slide-caption h3 {
+            font-size: 26px;
+            font-weight: 800;
+            color: #fff;
+            border-right: 4px solid #ff5e00;
+            padding-right: 12px;
+            margin-bottom: 5px;
+        }
+
+        /* أزرار السلايدر الزجاجية */
+        .prev, .next {
+            position: absolute;
+            top: 50%;
+            transform: translateY(-50%);
+            background: rgba(255, 255, 255, 0.2);
+            backdrop-filter: blur(8px);
+            -webkit-backdrop-filter: blur(8px);
+            color: white;
+            border: 1px solid rgba(255, 255, 255, 0.3);
+            width: 50px;
+            height: 50px;
+            cursor: pointer;
+            font-size: 20px;
+            border-radius: 50%;
+            transition: all 0.3s ease;
+            z-index: 10;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .prev { right: 20px; }
+        .next { left: 20px; }
+
+        .prev:hover, .next:hover {
+            background-color: #ff5e00;
+            border-color: #ff5e00;
+            transform: translateY(-50%) scale(1.1);
+        }
+
+        /* ==================== الأقسام والمعرض ==================== */
+        .container {
+            max-width: 1200px;
+            margin: 40px auto;
+            padding: 0 15px;
+        }
+
+        .section-title {
+            text-align: center;
+            background-color: #ff5e00;
+            color: white;
+            padding: 12px;
+            font-size: 24px;
+            border-radius: 8px;
+            margin-bottom: 25px;
+        }
+
+        .grid-gallery {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+            gap: 20px;
+        }
+
+        .card {
+            background-color: white;
+            border-radius: 8px;
+            overflow: hidden;
+            box-shadow: 0 4px 10px rgba(0,0,0,0.08);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        .card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 8px 20px rgba(0,0,0,0.15);
+        }
+
+        .card img {
+            width: 100%;
+            height: 200px;
+            object-fit: cover;
+            transition: transform 0.5s ease;
+        }
+
+        .card:hover img {
+            transform: scale(1.05);
+        }
+
+        .card-desc {
+            padding: 15px;
+            text-align: center;
+            font-size: 18px;
+            font-weight: bold;
+            color: #0044ff;
+            background-color: #fff;
+        }
+
+        /* بطاقات الكورسات */
+        .course-info {
+            padding: 15px;
+            text-align: center;
+        }
+
+        .course-info h3 {
+            font-size: 18px;
+            margin-bottom: 10px;
+            color: #222;
+        }
+
+        .course-info p {
+            font-size: 14px;
+            color: #666;
+            margin-bottom: 15px;
+        }
+
+        .btn {
+            display: inline-block;
+            padding: 8px 20px;
+            background-color: #ff5e00;
+            color: white;
+            text-decoration: none;
+            border-radius: 5px;
+            font-weight: bold;
+            transition: background 0.3s ease;
+        }
+
+        .btn:hover {
+            background-color: #e05300;
+        }
+
+        /* ==================== الفوتر ==================== */
+        footer {
+            text-align: center;
+            background-color: #1a1a1a;
+            color: white;
+            padding: 20px 0;
+            margin-top: 40px;
+        }
+    </style>
+</head>
+<body>
+
+    <!-- الهيدر -->
+    <header class="main-header">
+        <div class="header-content">
+            <div class="brand">
+                <h1>GRAVO</h1>
+                <p>تصميمات هندسية - دعاية وإعلان - طباعة - رسائل علمية</p>
+            </div>
+            <div class="contact-info">
+                <span>📞 TEL : 01275973124 - 01063085855</span>
+            </div>
+        </div>
+    </header>
+
+    <!-- شريط التنقل مع القائمة المنسدلة -->
+    <nav class="navbar">
+        <ul class="nav-links">
+            <li><a href="#home">الرئيسية</a></li>
+            <li class="dropdown">
+                <a href="#services" class="dropbtn">الخدمات ▾</a>
+                <ul class="dropdown-content">
+                    <li><a href="main page.html">كتابة الرسائل العلمية</a></li>
+                    <li><a href="#services">التصميمات والتعديلات</a></li>
+                    <li><a href="#services">الرسومات الهندسية</a></li>
+                    <li><a href="#services">تصميم الشهادات والكتب</a></li>
+                </ul>
+            </li>
+            <li class="dropdown">
+                <a href="#courses" class="dropbtn">الكورسات التعليمية ▾</a>
+                <ul class="dropdown-content">
+                    <li><a href="#courses">كورس AutoCad ورسم هندسي</a></li>
+                    <li><a href="#courses">كورس الجرافيك ديزاين</a></li>
+                    <li><a href="#courses">كورس تنسيق الرسائل العلمية</a></li>
+                </ul>
+            </li>
+            <li><a href="#about">من نحن</a></li>
+            <li><a href="#contact">اتصل بنا</a></li>
+        </ul>
+    </nav>
+
+    <!-- شريط الأخبار المتحرك -->
+    <div class="ticker-wrap">
+        <div class="ticker">
+            كتابة جميع المواد العلمية والأدبية بالكمبيوتر - تنسيق وكتابة الرسائل العلمية - عمل التصميمات - التعديلات على الصور - عمل الرسومات الهندسية - تصميم وطباعة الشهادات - طباعة الكتب والمذكرات - عمل C.V احترافي
+        </div>
+    </div>
+
+    <!-- سلايدر الصور الاحترافي -->
+    <section class="slider-container" id="home">
+        <div class="slider">
+            <div class="slides">
+                <div class="slide active">
+                    <img src="برنامج-كتابة-الرسائل-العلمية-2.jpg" alt="كتابة الرسائل العلمية">
+                    <div class="slide-caption">
+                        <h3>كتابة وتنسيق الرسائل العلمية</h3>
+                    </div>
+                </div>
+                <div class="slide">
+                    <img src="data-entry-and-typing-through-thumbnail-187498.jpg" alt="إدخال البيانات">
+                    <div class="slide-caption">
+                        <h3>إدخال البيانات والتفريغ النصي</h3>
+                    </div>
+                </div>
+                <div class="slide">
+                    <img src="pngtree-d-render-of-a-website-builder-for-a-graphic-design-studio-image_3761809.jpg" alt="التصميمات">
+                    <div class="slide-caption">
+                        <h3>تصميمات جرافيك ودعاية وإعلان</h3>
+                    </div>
+                </div>
+                <div class="slide">
+                    <img src="برنامج-تعديل-الصور-للكمبيوتر-8.jpg" alt="تعديل الصور">
+                    <div class="slide-caption">
+                        <h3>تعديل الصور والمعالجة الرقمية</h3>
+                    </div>
+                </div>
+                <div class="slide">
+                    <img src="pngtree-architectural-plans-measured-by-caliper-on-a-white-background-with-3d-image_3670462.jpg" alt="الرسومات الهندسية">
+                    <div class="slide-caption">
+                        <h3>عمل الرسومات والمخططات الهندسية</h3>
+                    </div>
+                </div>
+                <div class="slide">
+                    <img src="certificate-maker-new-1024x597.jpg" alt="طباعة الشهادات">
+                    <div class="slide-caption">
+                        <h3>تصميم وطباعة الشهادات المعتمدة</h3>
+                    </div>
+                </div>
+                <div class="slide">
+                    <img src="كيفية_الطباعة_من_الكمبيوتر_إلى_الطابعة.jpg" alt="طباعة الكتب والمذكرات">
+                    <div class="slide-caption">
+                        <h3>طباعة الكتب والمذكرات بجودة عالية</h3>
+                    </div>
+                </div>
+                <div class="slide">
+                    <img src="ما-هي-أهم-خدمات-الإنترنت؟.jpg" alt="خدمات الإنترنت">
+                    <div class="slide-caption">
+                        <h3>خدمات الإنترنت وتنسيق السيرة الذاتية</h3>
+                    </div>
+                </div>
+            </div>
+            <button class="prev" onclick="moveSlide(-1)">&#10095;</button>
+            <button class="next" onclick="moveSlide(1)">&#10094;</button>
+        </div>
+    </section>
+
+    <!-- قسم الخدمات -->
+    <section class="container" id="services">
+        <h2 class="section-title">الخدمات المقدمة</h2>
+        <div class="grid-gallery">
+            <div class="card">
+                <a target="_blank" href="Chrysanthemum.jpg">
+                    <img src="برنامج-كتابة-الرسائل-العلمية-2.jpg" alt="كتابة المواد العلمية">
+                </a>
+                <div class="card-desc">كتابة جميع المواد العلمية والأدبية</div>
+            </div>
+
+            <div class="card">
+                <a target="_blank" href="data-entry-and-typing-through-thumbnail-187498.jpg">
+                    <img src="data-entry-and-typing-through-thumbnail-187498.jpg" alt="تنسيق الرسائل العلمية">
+                </a>
+                <div class="card-desc">تنسيق وكتابة الرسائل العلمية</div>
+            </div>
+
+            <div class="card">
+                <a target="_blank" href="pngtree-d-render-of-a-website-builder-for-a-graphic-design-studio-image_3761809.jpg">
+                    <img src="pngtree-d-render-of-a-website-builder-for-a-graphic-design-studio-image_3761809.jpg" alt="التصميمات">
+                </a>
+                <div class="card-desc">عمل التصميمات</div>
+            </div>
+
+            <div class="card">
+                <a target="_blank" href="برنامج-تعديل-الصور-للكمبيوتر-8.jpg">
+                    <img src="برنامج-تعديل-الصور-للكمبيوتر-8.jpg" alt="التعديل على الصور">
+                </a>
+                <div class="card-desc">التعديلات على الصور</div>
+            </div>
+
+            <div class="card">
+                <a target="_blank" href="pngtree-architectural-plans-measured-by-caliper-on-a-white-background-with-3d-image_3670462.jpg">
+                    <img src="pngtree-architectural-plans-measured-by-caliper-on-a-white-background-with-3d-image_3670462.jpg" alt="الرسومات الهندسية">
+                </a>
+                <div class="card-desc">عمل الرسومات الهندسية</div>
+            </div>
+
+            <div class="card">
+                <a target="_blank" href="certificate-maker-new-1024x597.jpg">
+                    <img src="certificate-maker-new-1024x597.jpg" alt="تصميم الشهادات">
+                </a>
+                <div class="card-desc">تصميم وطباعة الشهادات</div>
+            </div>
+
+            <div class="card">
+                <a target="_blank" href="كيفية_الطباعة_من_الكمبيوتر_إلى_الطابعة.jpg">
+                    <img src="كيفية_الطباعة_من_الكمبيوتر_إلى_الطابعة.jpg" alt="طباعة الكتب">
+                </a>
+                <div class="card-desc">طباعة الكتب والمذكرات</div>
+            </div>
+
+            <div class="card">
+                <a target="_blank" href="ما-هي-أهم-خدمات-الإنترنت؟.jpg">
+                    <img src="ما-هي-أهم-خدمات-الإنترنت؟.jpg" alt="خدمات الإنترنت">
+                </a>
+                <div class="card-desc">خدمات الإنترنت وتنسيق C.V</div>
+            </div>
+        </div>
+    </section>
+
+    <!-- قسم الكورسات التعليمية -->
+    <section class="container" id="courses">
+        <h2 class="section-title">الكورسات التعليمية</h2>
+        <div class="grid-gallery">
+            <div class="card course-card">
+                <img src="pngtree-architectural-plans-measured-by-caliper-on-a-white-background-with-3d-image_3670462.jpg" alt="كورس أوتوكاد">
+                <div class="course-info">
+                    <h3>كورس AutoCad والرسومات الهندسية</h3>
+                    <p>تعلم الرسم الهندسي المعماري والإنشائي من الصفر حتى الاحتراف.</p>
+                    <a href="#" class="btn">اشترك الآن</a>
+                </div>
+            </div>
+
+            <div class="card course-card">
+                <img src="pngtree-d-render-of-a-website-builder-for-a-graphic-design-studio-image_3761809.jpg" alt="كورس الجرافيك ديزاين">
+                <div class="course-info">
+                    <h3>كورس التصميم الجرافيكي الشامل</h3>
+                    <p>احتراف برنامج الفوتوشوب والإليستريتور لإعداد تصاميم الدعاية والإعلان.</p>
+                    <a href="#" class="btn">اشترك الآن</a>
+                </div>
+            </div>
+
+            <div class="card course-card">
+                <img src="برنامج-كتابة-الرسائل-العلمية-2.jpg" alt="كورس كتابة الأبحاث">
+                <div class="course-info">
+                    <h3>احتراف تنسيق الرسائل العلمية</h3>
+                    <p>دورة المهارات المتقدمة في برنامج Word وإعداد الأبحاث والرسائل الأكاديمية.</p>
+                    <a href="#" class="btn">اشترك الآن</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- الفوتر -->
+    <footer>
+        <p>جميع الحقوق محفوظة &copy; 2026 - GRAVO</p>
+    </footer>
+
+    <!-- JavaScript الخاص بالسلايدر -->
+    <script>
+        let currentSlide = 0;
+        const slides = document.querySelectorAll('.slide');
+        const slidesContainer = document.querySelector('.slides');
+
+        function showSlide(index) {
+            slides.forEach(slide => slide.classList.remove('active'));
+
+            if (index >= slides.length) {
+                currentSlide = 0;
+            } else if (index < 0) {
+                currentSlide = slides.length - 1;
+            } else {
+                currentSlide = index;
+            }
+            
+            slides[currentSlide].classList.add('active');
+            slidesContainer.style.transform = `translateX(${currentSlide * 100}%)`;
+        }
+
+        function moveSlide(direction) {
+            showSlide(currentSlide + direction);
+        }
+
+        // التغيير التلقائي كل 4 ثوانٍ
+        setInterval(() => {
+            moveSlide(1);
+        }, 4000);
+    </script>
+</body>
+</html>

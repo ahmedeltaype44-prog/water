@@ -1,0 +1,540 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>كتابة وتنسيق الرسائل العلمية - GRAVO</title>
+    <!-- خط Cairo الاحترافي -->
+    <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;600;700;800&display=swap" rel="stylesheet">
+    
+    <style>
+        /* ==================== إعدادات عامة ==================== */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Cairo', sans-serif;
+        }
+
+        body {
+            background-color: #f8fafc;
+            color: #1e293b;
+            line-height: 1.7;
+        }
+
+        /* ==================== الهيدر والشريط العلوي ==================== */
+        .main-header {
+            background: linear-gradient(135deg, #0f172a, #1e293b);
+            color: white;
+            padding: 18px 0;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+        }
+
+        .header-content {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            flex-wrap: wrap;
+        }
+
+        .brand h1 {
+            font-size: 28px;
+            color: #ff5e00;
+            letter-spacing: 1px;
+        }
+
+        .brand p {
+            font-size: 14px;
+            color: #94a3b8;
+        }
+
+        .contact-info {
+            font-weight: 600;
+            background: rgba(255, 255, 255, 0.08);
+            padding: 8px 18px;
+            border-radius: 25px;
+            border: 1px solid rgba(255, 255, 255, 0.15);
+            font-size: 14px;
+        }
+
+        /* شريط التنقل */
+        .navbar {
+            background-color: #0044ff;
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.15);
+        }
+
+        .nav-links {
+            list-style: none;
+            display: flex;
+            justify-content: center;
+            max-width: 1200px;
+            margin: 0 auto;
+            flex-wrap: wrap;
+        }
+
+        .nav-links li a {
+            display: block;
+            color: white;
+            text-decoration: none;
+            padding: 14px 22px;
+            font-weight: 700;
+            font-size: 15px;
+            transition: background 0.3s ease;
+        }
+
+        .nav-links li a:hover, .nav-links li a.active {
+            background-color: #002bbb;
+        }
+
+        /* ==================== قسم غلاف الخدمة (Hero Section) ==================== */
+        .hero-section {
+            background: linear-gradient(rgba(15, 23, 42, 0.85), rgba(15, 23, 42, 0.85)), 
+                        url('برنامج-كتابة-الرسائل-العلمية-2.jpg') center/cover no-repeat;
+            padding: 90px 20px;
+            text-align: center;
+            color: white;
+        }
+
+        .hero-content {
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        .hero-title {
+            font-size: 38px;
+            font-weight: 800;
+            color: #ffffff;
+            margin-bottom: 15px;
+            line-height: 1.3;
+        }
+
+        .hero-title span {
+            color: #ff5e00;
+        }
+
+        .hero-subtitle {
+            font-size: 18px;
+            color: #cbd5e1;
+            margin-bottom: 30px;
+        }
+
+        .btn-primary {
+            display: inline-block;
+            background-color: #ff5e00;
+            color: white;
+            padding: 12px 35px;
+            font-size: 17px;
+            font-weight: bold;
+            border-radius: 30px;
+            text-decoration: none;
+            transition: all 0.3s ease;
+            box-shadow: 0 4px 15px rgba(255, 94, 0, 0.4);
+        }
+
+        .btn-primary:hover {
+            background-color: #e05300;
+            transform: translateY(-3px);
+            box-shadow: 0 6px 20px rgba(255, 94, 0, 0.6);
+        }
+
+        /* ==================== الحاوية والأقسام ==================== */
+        .container {
+            max-width: 1200px;
+            margin: 60px auto;
+            padding: 0 20px;
+        }
+
+        .section-header {
+            text-align: center;
+            margin-bottom: 40px;
+        }
+
+        .section-header h2 {
+            font-size: 30px;
+            color: #0f172a;
+            position: relative;
+            display: inline-block;
+            padding-bottom: 10px;
+        }
+
+        .section-header h2::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            right: 50%;
+            transform: translateX(50%);
+            width: 70px;
+            height: 4px;
+            background-color: #ff5e00;
+            border-radius: 2px;
+        }
+
+        /* المميزات (Features) */
+        .grid-3 {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 25px;
+        }
+
+        .feature-card {
+            background: white;
+            padding: 30px 25px;
+            border-radius: 12px;
+            box-shadow: 0 5px 20px rgba(0,0,0,0.05);
+            border: 1px solid #e2e8f0;
+            transition: transform 0.3s, box-shadow 0.3s;
+            text-align: center;
+        }
+
+        .feature-card:hover {
+            transform: translateY(-7px);
+            box-shadow: 0 10px 25px rgba(0,0,0,0.1);
+        }
+
+        .feature-icon {
+            font-size: 40px;
+            margin-bottom: 15px;
+            display: inline-block;
+        }
+
+        .feature-card h3 {
+            font-size: 20px;
+            color: #0044ff;
+            margin-bottom: 12px;
+        }
+
+        .feature-card p {
+            color: #64748b;
+            font-size: 15px;
+        }
+
+        /* تفاصيل الخدمة مع صورة متوافقة */
+        .service-details {
+            display: flex;
+            align-items: center;
+            gap: 40px;
+            background: white;
+            padding: 40px;
+            border-radius: 16px;
+            box-shadow: 0 5px 20px rgba(0,0,0,0.05);
+            margin-top: 50px;
+            flex-wrap: wrap;
+        }
+
+        .service-img {
+            flex: 1;
+            min-width: 300px;
+            border-radius: 12px;
+            overflow: hidden;
+            box-shadow: 0 8px 25px rgba(0,0,0,0.15);
+        }
+
+        .service-img img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            display: block;
+        }
+
+        .service-info {
+            flex: 1;
+            min-width: 300px;
+        }
+
+        .service-info h3 {
+            font-size: 26px;
+            color: #0f172a;
+            margin-bottom: 20px;
+        }
+
+        .list-check {
+            list-style: none;
+        }
+
+        .list-check li {
+            position: relative;
+            padding-right: 30px;
+            margin-bottom: 12px;
+            font-size: 16px;
+            color: #334155;
+            font-weight: 600;
+        }
+
+        .list-check li::before {
+            content: "✓";
+            position: absolute;
+            right: 0;
+            top: 0;
+            color: #ff5e00;
+            font-size: 18px;
+            font-weight: bold;
+        }
+
+        /* مراحل العمل (Workflow) */
+        .workflow {
+            background-color: #f1f5f9;
+            padding: 60px 20px;
+            border-radius: 16px;
+            margin-top: 60px;
+        }
+
+        .steps-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+            gap: 20px;
+            text-align: center;
+        }
+
+        .step-item {
+            background: white;
+            padding: 25px 15px;
+            border-radius: 12px;
+            position: relative;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.04);
+        }
+
+        .step-number {
+            width: 45px;
+            height: 45px;
+            background: #0044ff;
+            color: white;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: bold;
+            font-size: 18px;
+            margin: 0 auto 15px auto;
+        }
+
+        /* نموذج طلب الخدمة المربوط بالجيميل */
+        .request-form-section {
+            background: white;
+            padding: 40px;
+            border-radius: 16px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.08);
+            max-width: 800px;
+            margin: 60px auto 0 auto;
+        }
+
+        .form-group {
+            margin-bottom: 20px;
+        }
+
+        .form-group label {
+            display: block;
+            font-weight: bold;
+            margin-bottom: 8px;
+            color: #1e293b;
+        }
+
+        .form-control {
+            width: 100%;
+            padding: 12px 15px;
+            border: 1px solid #cbd5e1;
+            border-radius: 8px;
+            font-size: 15px;
+            transition: border-color 0.3s;
+        }
+
+        .form-control:focus {
+            outline: none;
+            border-color: #0044ff;
+        }
+
+        textarea.form-control {
+            resize: vertical;
+            height: 120px;
+        }
+
+        .btn-submit {
+            width: 100%;
+            background: #0044ff;
+            color: white;
+            padding: 14px;
+            border: none;
+            border-radius: 8px;
+            font-size: 18px;
+            font-weight: bold;
+            cursor: pointer;
+            transition: background 0.3s;
+        }
+
+        .btn-submit:hover {
+            background: #002bbb;
+        }
+
+        /* الفوتر */
+        footer {
+            text-align: center;
+            background-color: #0f172a;
+            color: white;
+            padding: 25px 0;
+            margin-top: 60px;
+        }
+    </style>
+</head>
+<body>
+
+    <!-- الهيدر الرئيسي -->
+    <header class="main-header">
+        <div class="header-content">
+            <div class="brand">
+                <h1>GRAVO</h1>
+                <p>تصميمات هندسية - دعاية وإعلان - طباعة - رسائل علمية</p>
+            </div>
+            <div class="contact-info">
+                <span>📞 التواصل المباشر: 01275973124 - 01063085855</span>
+            </div>
+        </div>
+    </header>
+
+    <!-- شريط التنقل -->
+    <nav class="navbar">
+        <ul class="nav-links">
+            <li><a href="page.html">الرئيسية</a></li>
+            <li><a href="index.html#services" class="active">الخدمات العامة</a></li>
+            <li><a href="index.html#courses">الكورسات التعليمية</a></li>
+            <li><a href="#request">اطلب الخدمة الآن</a></li>
+        </ul>
+    </nav>
+
+    <!-- Hero Section -->
+    <section class="hero-section">
+        <div class="hero-content">
+            <h1 class="hero-title">كتابة وتنسيق <span>الرسائل العلمية والأكاديمية</span> باحترافية متناهية</h1>
+            <p class="hero-subtitle">نقدم للباحثين وطلاب الماجستير والدكتوراه أفضل معايير التدقيق اللغوي والتنسيق وفق الدليل الأكاديمي المعتمد لكل جامعة.</p>
+            <a href="#request" class="btn-primary">اطلب تنسيق رسالتك الآن</a>
+        </div>
+    </section>
+
+    <!-- مميزات الخدمة -->
+    <section class="container">
+        <div class="section-header">
+            <h2>لماذا تختار مركز GRAVO لكتابة وتنسيق رسالتك؟</h2>
+        </div>
+
+        <div class="grid-3">
+            <div class="feature-card">
+                <span class="feature-icon">📐</span>
+                <h3>تنسيق أكاديمي دقيق</h3>
+                <p>ضبط الهوامش، الخطوط، المسافات، والعناوين وفق شروط وشكل دليل كل جامعة بدقة عالية.</p>
+            </div>
+
+            <div class="feature-card">
+                <span class="feature-icon">📚</span>
+                <h3>فهارس تلقائية شاملة</h3>
+                <p>إعداد فهرس المحتويات، الجداول، الأشكال، والأشكال التوضيحية بدقة وبضغطة زر دون أخطاء.</p>
+            </div>
+
+            <div class="feature-card">
+                <span class="feature-icon">✍️</span>
+                <h3>تدقيق لغوي وإملائي</h3>
+                <p>مراجعة شاملة لضمان خلو الرسالة من الأخطاء النحوية والإملائية وصياغة جمل قوية أكاديمياً.</p>
+            </div>
+        </div>
+
+        <!-- تفاصيل إضافية للخدمة مع صورة متناسقة -->
+        <div class="service-details">
+            <div class="service-img">
+                <img src="data-entry-and-typing-through-thumbnail-187498.jpg" alt="تنسيق الأبحاث والرسائل">
+            </div>
+            <div class="service-info">
+                <h3>ما نضمنه لك في خدمة الرسائل العلمية:</h3>
+                <ul class="list-check">
+                    <li>كتابة وتفريغ المخطوطات والمسودات بسرعة ودقة متناهية.</li>
+                    <li>إعداد المراجع والمصادر وتوثيقها بأساليب القياس الدولية (APA, Harvard...).</li>
+                    <li>معالجة الرسوم البيانية والجداول وإعادة رسمها بجودة عالية.</li>
+                    <li>تسليم ملفات Word للباحث مع نسخة جاهزة للطباعة بصيغة PDF.</li>
+                    <li>إمكانية إجراء أي تعديلات مجانية تطلبها لجنة المناقشة.</li>
+                </ul>
+            </div>
+        </div>
+
+        <!-- خطوة بخطوة -->
+        <div class="workflow">
+            <div class="section-header">
+                <h2>خطوات إنجاز عملك لدينا</h2>
+            </div>
+            <div class="steps-grid">
+                <div class="step-item">
+                    <div class="step-number">1</div>
+                    <h4>إرسال الملف</h4>
+                    <p>إرسال المسودة ودليل الجامعة للتنسيق</p>
+                </div>
+
+                <div class="step-item">
+                    <div class="step-number">2</div>
+                    <h4>المراجعة والتقييم</h4>
+                    <p>تحديد الوقت والتكلفة المناسبة</p>
+                </div>
+
+                <div class="step-item">
+                    <div class="step-number">3</div>
+                    <h4>التنسيق والتدقيق</h4>
+                    <p>العمل على تنسيق وكتابة الرسالة احترافياً</p>
+                </div>
+
+                <div class="step-item">
+                    <div class="step-number">4</div>
+                    <h4>التسليم والمراجعة</h4>
+                    <p>تسليم العمل النهائي للباحث ومراجعته</p>
+                </div>
+            </div>
+        </div>
+
+        <!-- نموذج طلب الخدمة المربوط بالجيميل مباشرة -->
+        <div class="request-form-section" id="request">
+            <div class="section-header">
+                <h2>طلب خدمة تنسيق أو كتابة رسالة علمية</h2>
+            </div>
+            
+            <form action="https://formsubmit.co/ahmedeltaype44@gmail.com" method="POST" enctype="multipart/form-data">
+                <!-- إعدادات إضافية لإخفاء أمان الكابتشا وإظهار الرسالة بنجاح -->
+                <input type="hidden" name="_subject" value="طلب خدمة جديد - GRAVO">
+                <input type="hidden" name="_captcha" value="false">
+
+                <div class="form-group">
+                    <label>الاسم بالكامل:</label>
+                    <input type="text" name="الاسم بالكامل" class="form-control" placeholder="أدخل اسمك الكريـم" required>
+                </div>
+                <div class="form-group">
+                    <label>رقم الهاتف / الواتساب:</label>
+                    <input type="tel" name="رقم الهاتف" class="form-control" placeholder="01xxxxxxxxx" required>
+                </div>
+                <div class="form-group">
+                    <label>نوع العمل المطلـوب:</label>
+                    <select name="نوع الخدمة" class="form-control" required>
+                        <option value="">اختر نوع الخدمة...</option>
+                        <option value="تنسيق رسالة ماجستير / دكتوراه كاملة">تنسيق رسالة ماجستير / دكتوراه كاملة</option>
+                        <option value="كتابة وتفريغ مسودة خطية بالكمبيوتر">كتابة وتفريغ مسودة خطية بالكمبيوتر</option>
+                        <option value="تعديل مراجع وتدقيق لغوي فقط">تعديل مراجع وتدقيق لغوي فقط</option>
+                        <option value="إعداد وعمل العروض التقديمية (PowerPoint) للمناقشة">إعداد وعمل العروض التقديمية (PowerPoint) للمناقشة</option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label>إرفاق ملف المسودة أو دليل الجامعة (Word / PDF / صورة):</label>
+                    <input type="file" name="الملف المرفق" class="form-control" accept=".doc,.docx,.pdf,.png,.jpg,.jpeg">
+                </div>
+                <div class="form-group">
+                    <label>تفاصيل إضافية أو ملاحظات:</label>
+                    <textarea name="الملاحظات والتفاصيل" class="form-control" placeholder="اكتب ملاحظاتك أو اسم الجامعة والدليل المطلوب..."></textarea>
+                </div>
+                <button type="submit" class="btn-submit">إرسال الطلب الآن</button>
+            </form>
+        </div>
+    </section>
+
+    <!-- الفوتر -->
+    <footer>
+        <p>جميع الحقوق محفوظة &copy; 2026 - GRAVO للتصميمات والخدمات التعليمية والهندسية</p>
+    </footer>
+
+</body>
+</html>
